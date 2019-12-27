@@ -1,0 +1,50 @@
+﻿@using OnlineShop.Models;
+@model List<Products>
+@{
+    ViewData["Title"] = "Card";
+}
+
+<h2>Your Card</h2>
+<br />
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Product Type</th>
+                <th>Color</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@item.Image" width="300" height="200"/> </td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>@item.productTypes.ProductType</td>
+                    <td>@item.ProductColor</td>
+                    <td>
+                        <a asp-action="Remove" asp-route-id="@item.Id" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="col-6">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-success">Back to Home</a>
+    </div>
+    <div class="col-6 text-right">
+        <h3>Total Amuont</h3>
+        <h3>Grand Total : @Model.Sum(c=>c.Price)</h3>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-info">Process to ChackOut</a>
+    </div>
+</div>

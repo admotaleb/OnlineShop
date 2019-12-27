@@ -1,0 +1,6 @@
+﻿.dataTables_wrapper{
+    width:100%;
+}
+.table-info, .table-info > th, .table-info > td {
+    background-color: #17a2b8;
+}
